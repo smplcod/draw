@@ -7,7 +7,7 @@ import "./index.css";
 
 export const queryClient = new QueryClient();
 
-import { routeTree } from "./routeTree.gen";
+import { routeTree } from "./generated/routeTree.gen";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "./components/theme-provider";
