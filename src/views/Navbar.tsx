@@ -41,7 +41,7 @@ export default function Navbar() {
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.altKey && (e.key === "f" || e.key === "F")) {
+      if (e.altKey && e.code === "KeyF") {
         e.preventDefault();
         setVisible((v) => !v);
       }
