@@ -14,7 +14,6 @@ export default defineConfig({
         const dir = path.resolve(__dirname, 'src/generated');
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir, { recursive: true });
-          console.log('✅ Created src/generated directory');
         }
       },
     },
