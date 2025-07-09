@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 import { LucideIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 type NavButtonProps = {
   isActive: boolean;
@@ -36,8 +37,27 @@ const routes = [
 ];
 
 export default function Navbar() {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.altKey && (e.key === "f" || e.key === "F")) {
+        e.preventDefault();
+        setVisible((v) => !v);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
-    <nav className="grid h-12 w-full grid-cols-3 p-1 px-3">
+    <nav
+      className={cn(
+        "h-12 w-full grid-cols-3 p-1 px-3",
+        visible ? "grid" : "hidden",
+      )}
+    >
       <div>
         <Link to="/pages" className="flex w-fit items-center">
           <h1 className="font-virgil text-3xl font-bold">Draw</h1>
