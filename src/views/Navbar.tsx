@@ -3,7 +3,10 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 import { LucideIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+
+type NavbarProps = {
+  visible: boolean;
+};
 
 type NavButtonProps = {
   isActive: boolean;
@@ -36,20 +39,7 @@ const routes = [
   },
 ];
 
-export default function Navbar() {
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      if (e.altKey && e.code === "KeyF") {
-        e.preventDefault();
-        setVisible((v) => !v);
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+export default function Navbar({ visible }: NavbarProps) {
 
   return (
     <nav
