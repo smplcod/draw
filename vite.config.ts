@@ -30,4 +30,11 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // 💥 временное отключение анализа, чтобы Rollup 5 не падал
+    // потом можно убрать
+    rollupOptions: {
+      treeshake: false,
+    },
+  },
 });
